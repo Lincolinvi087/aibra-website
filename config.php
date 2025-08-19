@@ -4,7 +4,7 @@ $host = "db.ikfzkicajfgszrrxyrdd.supabase.co";
 $port = "5432";
 $dbname = "postgres";
 $user = "postgres";
-$password = "YOUR_SUPABASE_PASSWORD"; // 🔑 replace with your actual password
+$password = "5he:is:th3:legend"; // 🔑 replace with your actual password
 
 try {
     // DSN (Data Source Name)
