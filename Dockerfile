@@ -1,17 +1,14 @@
-# Use official PHP with Apache
 FROM php:8.2-apache
 
-# Copy project files into the Apache document root
+# Install PostgreSQL extension
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
+
+# Enable Apache mod_rewrite (optional if you use clean URLs)
+RUN a2enmod rewrite
+
+# Copy project files into container
 COPY . /var/www/html/
 
 # Set working directory
 WORKDIR /var/www/html/
-
-# Expose Render's port
-EXPOSE 10000
-
-# Change Apache to listen on Render's $PORT
-RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf
-
-# Start Apache in foreground
-CMD ["apache2-foreground"]
